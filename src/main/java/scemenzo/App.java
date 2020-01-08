@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -19,7 +20,14 @@ public class App extends Application {
     private List<File> imageFiles;
 
     @Override
+    public void init() throws Exception {
+        super.init();
+        Font.loadFont(App.class.getResource("magicFont.ttf").toExternalForm(), 12);
+    }
+
+    @Override
     public void start(Stage stage) throws IOException {
+        stage.setTitle("Telegram Sticker Wizard");
         scene = new Scene(loadFXML("primary"));
         stage.setScene(scene);
         stage.setResizable(false);

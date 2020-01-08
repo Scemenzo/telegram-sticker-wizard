@@ -5,11 +5,26 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<HBox alignment="CENTER" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scemenzo.PrimaryController">
+<HBox alignment="CENTER" prefHeight="600.0" prefWidth="1000.0" spacing="10.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scemenzo.PrimaryController">
    <children>
       <VBox alignment="CENTER" spacing="10.0" HBox.hgrow="ALWAYS">
          <children>
+            <HBox alignment="BOTTOM_CENTER" spacing="10.0">
+               <children>
+                  <Label alignment="CENTER" graphicTextGap="1.0" style="-fx-font-family: 'Sketch Gothic School'" text="Telegram Sticker Wizard" textAlignment="CENTER" textFill="#005983">
+                     <font>
+                        <Font size="38.0" />
+                     </font>
+                  </Label>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="infoButton" mnemonicParsing="false" onAction="#switchToInfo" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </VBox.margin>
+            </HBox>
             <ListView id="stickerFileList" fx:id="stickerListView" VBox.vgrow="ALWAYS" />
             <HBox alignment="CENTER" spacing="10.0">
                <children>
@@ -23,7 +38,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </VBox>
-      <VBox alignment="CENTER" spacing="10.0" HBox.hgrow="ALWAYS">
+      <VBox alignment="CENTER" spacing="10.0">
          <children>
             <VBox fx:id="imageFrame" alignment="CENTER" maxHeight="500.0" maxWidth="500.0" minHeight="500.0" minWidth="500.0" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: black;">
                <children>

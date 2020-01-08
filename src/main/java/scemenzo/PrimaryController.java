@@ -14,6 +14,7 @@ import javafx.scene.image.PixelReader;
 import javafx.scene.input.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import scemenzo.model.Sticker;
@@ -22,6 +23,7 @@ import scemenzo.utils.StickerExporter;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 
 public class PrimaryController {
@@ -33,6 +35,7 @@ public class PrimaryController {
     @FXML private Button redoButton;
     @FXML private Button exportButton;
     @FXML private Button resetButton;
+    @FXML private Button infoButton;
     @FXML private Slider tresholdValue;
     @FXML private VBox imageFrame;
     @FXML private TextField croppingSpinner;
@@ -43,6 +46,11 @@ public class PrimaryController {
     @FXML public void initialize() {
         stickerListItems = FXCollections.observableArrayList();
         stickerListView.setItems(stickerListItems);
+        try {
+            infoButton.setGraphic(new ImageView(App.class.getResource("infoIcon.png").toURI().toString()));
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
         deactivateTools();
 
         //List selection click
