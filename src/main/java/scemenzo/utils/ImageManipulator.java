@@ -1,0 +1,40 @@
+package scemenzo.utils;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.PixelReader;
+import javafx.scene.image.PixelWriter;
+import javafx.scene.image.WritableImage;
+import javafx.scene.paint.Color;
+
+public class ImageManipulator {
+
+    public static Image cropImage(Image image, int margin){
+        if(margin == 0) {
+            return image;
+        }
+
+        System.out.println("Cropping procedure with margin: " + margin);
+        return new WritableImage(
+                image.getPixelReader(),
+                margin,
+                margin,
+                (int) (image.getWidth() - 2 * margin),
+                (int) (image.getHeight() - 2 * margin));
+    }
+
+    public static WritableImage applyColorElimination(Image inputImage, int selectedPixelX, int selectedPixelY, Color colorSelected, int treshold) {
+        int width = (int) inputImage.getWidth();
+        int height = (int) inputImage.getHeight();
+
+        WritableImage outputImage = new WritableImage(inputImage.getPixelReader(), width, height);
+        PixelReader reader = outputImage.getPixelReader();
+        PixelWriter writer = outputImage.getPixelWriter();
+
+        //Use of the flood algorithm
+        double normalizedTreshold = (double) treshold / 255;
+        System.out.println("Flooding along resolution " + width + "x" + height + " with treshold: " + normalizedTreshold);
+        FloodAlgorithm algorithm = new FloodAlgorithm(reader, writer, width, height, colorSelected, Color.TRANSPARENT, normalizedTreshold);
+        FloodAlgorithm.floodFill(selectedPixelX, selectedPixelY);
+        return outputImage;
+    }
+}
