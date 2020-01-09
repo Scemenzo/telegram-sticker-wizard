@@ -47,14 +47,4 @@ public class ImageManipulator {
         return outputImage;
     }
 
-    public static void saveSnaphsotOfScene(Region region, String filePath) {
-        SnapshotParameters snapshotParameters = new SnapshotParameters();
-        snapshotParameters.setFill(Color.TRANSPARENT);
-        BufferedImage bufferedImage = SwingFXUtils.fromFXImage(region.snapshot(snapshotParameters, new WritableImage((int)region.getWidth(), (int)region.getHeight())), null);
-        try {
-            ImageIO.write(bufferedImage, "png", new File(filePath));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

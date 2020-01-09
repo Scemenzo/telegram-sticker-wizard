@@ -3,9 +3,15 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scemenzo.InfoController">
     <children>
+        <Label fx:id="titleLabel" alignment="CENTER" graphicTextGap="1.0" style="-fx-font-family: 'Sketch Gothic School'" text="Telegram Sticker Wizard" textAlignment="CENTER" textFill="#005983">
+         <font>
+            <Font size="24.0" />
+         </font>
+        </Label>
         <Label text="Info view" />
         <Button fx:id="secondaryButton" onAction="#switchToPrimary" text="Back" />
     </children>

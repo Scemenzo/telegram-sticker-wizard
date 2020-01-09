@@ -6,6 +6,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
+import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import scemenzo.model.Sticker;
 
@@ -14,9 +15,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class StickerExporter {
+public class FileSaver {
 
-    public static boolean persist(Sticker sticker) {
+    public static boolean saveSticker(Sticker sticker) {
         boolean savedCorrectly = false;
         File outputFile = new File(sticker.getDirectoryPath() + "/" + "Sticker_" + sticker.getName().substring(0, sticker.getName().lastIndexOf('.')) + ".png");
 
@@ -53,6 +54,17 @@ public class StickerExporter {
             e.printStackTrace();
         }
         return savedCorrectly;
+    }
+
+    public static void saveSnaphsotOfScene(Region region, String filePath) {
+        SnapshotParameters snapshotParameters = new SnapshotParameters();
+        snapshotParameters.setFill(Color.TRANSPARENT);
+        BufferedImage bufferedImage = SwingFXUtils.fromFXImage(region.snapshot(snapshotParameters, new WritableImage((int)region.getWidth(), (int)region.getHeight())), null);
+        try {
+            ImageIO.write(bufferedImage, "png", new File(filePath));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

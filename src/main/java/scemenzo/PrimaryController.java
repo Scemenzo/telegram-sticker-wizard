@@ -5,29 +5,21 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.SnapshotParameters;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelReader;
-import javafx.scene.image.WritableImage;
 import javafx.scene.input.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import scemenzo.model.Sticker;
 import scemenzo.utils.ImageManipulator;
-import scemenzo.utils.StickerExporter;
+import scemenzo.utils.FileSaver;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -48,7 +40,6 @@ public class PrimaryController {
     @FXML private TextField croppingSpinner;
     @FXML private Label titleLabel;
 
-
     private ObservableList<Sticker> stickerListItems;
     private Sticker selectedSticker;
 
@@ -57,12 +48,6 @@ public class PrimaryController {
         stickerListView.setItems(stickerListItems);
         try {
             infoButton.setGraphic(new ImageView(App.class.getResource("infoIcon.png").toURI().toString()));
-            titleLabel.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    ImageManipulator.saveSnaphsotOfScene(titleLabel, "/home/enzo/Desktop/title.png");
-                }
-            });
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
@@ -168,7 +153,7 @@ public class PrimaryController {
             System.out.println("Elaborating " + stickerListItems.size() + " stickers");
             boolean problemsSaving = false;
             for (Sticker stickerListItem : stickerListItems) {
-                if(!StickerExporter.persist(stickerListItem)) {
+                if(!FileSaver.saveSticker(stickerListItem)) {
                     problemsSaving = true;
                 }
             }
