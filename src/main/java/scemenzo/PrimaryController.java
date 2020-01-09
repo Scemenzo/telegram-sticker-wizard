@@ -39,7 +39,6 @@ public class PrimaryController {
     @FXML private VBox imageFrame;
     @FXML private TextField croppingSpinner;
     @FXML private Label titleLabel;
-
     private ObservableList<Sticker> stickerListItems;
     private Sticker selectedSticker;
 

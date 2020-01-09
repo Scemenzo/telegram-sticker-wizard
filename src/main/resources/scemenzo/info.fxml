@@ -5,14 +5,28 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scemenzo.InfoController">
+<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scemenzo.InfoController">
     <children>
-        <Label fx:id="titleLabel" alignment="CENTER" graphicTextGap="1.0" style="-fx-font-family: 'Sketch Gothic School'" text="Telegram Sticker Wizard" textAlignment="CENTER" textFill="#005983">
-         <font>
-            <Font size="24.0" />
-         </font>
-        </Label>
-        <Label text="Info view" />
+      <VBox spacing="5.0">
+         <children>
+              <Label fx:id="titleLabel" alignment="CENTER" graphicTextGap="1.0" style="-fx-font-family: 'Sketch Gothic School'" text="What you can do with this software" textAlignment="CENTER" textFill="#005983">
+               <font>
+                  <Font size="36.0" />
+               </font>
+              </Label>
+              <Label text="• Loading multiple images&#10;• Cropping the margin of every image&#10;• Magic wand feature with undo and redo actions&#10;• One-click exporting: the app will save every image in PNG format scaled for your needs inside the same directory of every image&#10;&#10;" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin></Label>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </VBox>
+      <Region VBox.vgrow="ALWAYS" />
         <Button fx:id="secondaryButton" onAction="#switchToPrimary" text="Back" />
     </children>
     <padding>
