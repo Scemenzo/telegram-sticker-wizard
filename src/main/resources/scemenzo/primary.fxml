@@ -13,7 +13,7 @@
          <children>
             <HBox alignment="BOTTOM_CENTER" spacing="10.0">
                <children>
-                  <Label alignment="CENTER" graphicTextGap="1.0" style="-fx-font-family: 'Sketch Gothic School'" text="Telegram Sticker Wizard" textAlignment="CENTER" textFill="#005983">
+                  <Label fx:id="titleLabel" alignment="CENTER" graphicTextGap="1.0" style="-fx-font-family: 'Sketch Gothic School'" text="Telegram Sticker Wizard" textAlignment="CENTER" textFill="#005983">
                      <font>
                         <Font size="38.0" />
                      </font>

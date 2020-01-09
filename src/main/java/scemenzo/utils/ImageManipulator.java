@@ -1,10 +1,19 @@
 package scemenzo.utils;
 
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.Node;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
+import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class ImageManipulator {
 
@@ -36,5 +45,16 @@ public class ImageManipulator {
         FloodAlgorithm algorithm = new FloodAlgorithm(reader, writer, width, height, colorSelected, Color.TRANSPARENT, normalizedTreshold);
         FloodAlgorithm.floodFill(selectedPixelX, selectedPixelY);
         return outputImage;
+    }
+
+    public static void saveSnaphsotOfScene(Region region, String filePath) {
+        SnapshotParameters snapshotParameters = new SnapshotParameters();
+        snapshotParameters.setFill(Color.TRANSPARENT);
+        BufferedImage bufferedImage = SwingFXUtils.fromFXImage(region.snapshot(snapshotParameters, new WritableImage((int)region.getWidth(), (int)region.getHeight())), null);
+        try {
+            ImageIO.write(bufferedImage, "png", new File(filePath));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

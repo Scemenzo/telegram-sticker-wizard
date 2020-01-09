@@ -4,11 +4,13 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 
 /**
@@ -28,6 +30,11 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         stage.setTitle("Telegram Sticker Wizard");
+        try {
+            stage.getIcons().add(new Image(App.class.getResource("icon.png").toURI().toString()));
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
         scene = new Scene(loadFXML("primary"));
         stage.setScene(scene);
         stage.setResizable(false);
